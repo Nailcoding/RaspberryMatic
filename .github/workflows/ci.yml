@@ -25,7 +25,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [rpi0, rpi2, rpi3, rpi4, tinkerboard, intelnuc, ova, oci_amd64, oci_arm64, oci_arm]
+        #platform: [rpi0, rpi2, rpi3, rpi4, tinkerboard, intelnuc, ova, oci_amd64, oci_arm64, oci_arm]
+        platform: [oci_amd64, oci_arm64, oci_arm]
     
     steps:
     - uses: actions/checkout@v2
@@ -190,7 +191,7 @@ jobs:
       continue-on-error: true
 
   oci-multiarch-build-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: build
     if: github.event_name != 'pull_request' #Cannot enable for PRs since secrets are not available ^^^
 
