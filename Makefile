@@ -52,7 +52,7 @@ else
 	#Dummy build - mainly for testing CI
 	echo -n "DO NOT MERGE THIS CHANGE - FOR CI test only!!!!"
 	mkdir -p build-$(PRODUCT)/images
-	dd if=/dev/zero of=dummy_file bs=16k count=10000
+	dd if=/dev/urandom of=dummy_file bs=16k count=10000
 	tar -cf build-$(PRODUCT)/images/rootfs.tar dummy_file
 	touch build-$(PRODUCT)/images/sdcard.img
 	touch build-$(PRODUCT)/images/RaspberryMatic.ova
