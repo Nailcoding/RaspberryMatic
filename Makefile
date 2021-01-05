@@ -52,7 +52,8 @@ else
 	#Dummy build - mainly for testing CI
 	echo -n "DO NOT MERGE THIS CHANGE - FOR CI test only!!!!"
 	mkdir -p build-$(PRODUCT)/images
-	tar -cf build-$(PRODUCT)/images/rootfs.tar LICENSE
+	dd if=/dev/zero of=dummy_file bs=16k count=10000
+	tar -cf build-$(PRODUCT)/images/rootfs.tar dummy_file
 	touch build-$(PRODUCT)/images/sdcard.img
 	touch build-$(PRODUCT)/images/RaspberryMatic.ova
 	for f in `cat release/updatepkg/$(PRODUCT)/files-images.txt`; do touch build-$(PRODUCT)/images/$${f}; done
